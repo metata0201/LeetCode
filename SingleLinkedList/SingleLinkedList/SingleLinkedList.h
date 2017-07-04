@@ -15,6 +15,7 @@ public:
     ~SingleLinkedList();
 public:
     ListNode* insert(int val);
+    ListNode* addTwoNumbers_Reverse(ListNode* l1, ListNode* l2);
 
 private:
     ListNode *pHead;

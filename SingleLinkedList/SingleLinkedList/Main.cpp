@@ -44,4 +44,18 @@ void main()
         pNode = pNode->pNext;
     }
     cout << endl;
+
+    // Add two numbers
+    SingleLinkedList res;
+    ListNode *pRes = res.addTwoNumbers_Reverse(pHead1, pHead2);
+
+    // Display
+    pNode = pRes;
+    cout << "l1 + l2: ";
+    while (pNode)
+    {
+        cout << pNode->val << " ";
+        pNode = pNode->pNext;
+    }
+    cout << endl;
 }

@@ -22,3 +22,72 @@ ListNode* SingleLinkedList::insert(int val)
     pHead = pNode;
     return pHead;
 }
+
+// Through reversing list l1 and l2
+ListNode* SingleLinkedList::addTwoNumbers_Reverse(ListNode* l1, ListNode* l2)
+{
+    if ((l1 == NULL) && (l2 == NULL)){
+        return NULL;
+    }
+    else if (l1 == NULL){
+        return l2;
+    }
+    else if (l2 == NULL){
+        return l1;
+    }
+
+    // Reverse l1 and l2
+    SingleLinkedList reverse1, reverse2;
+    ListNode *p1 = l1, *pReverse1 = NULL, *p2 = l2, *pReverse2 = NULL;
+    while (p1)  // Reverse l1
+    {
+        pReverse1 = reverse1.insert(p1->val);
+        p1 = p1->pNext;
+    }
+
+    while (p2)  // Reverse l2
+    {
+        pReverse2 = reverse2.insert(p2->val);
+        p2 = p2->pNext;
+    }
+
+    // Add reverse1 and reverse2
+    p1 = pReverse1;
+    p2 = pReverse2;
+    int sum = 0, carry = 0;
+    while (p1 && p2)
+    {
+        sum = p1->val + p2->val + carry;
+        carry = sum / 10;
+        insert(sum % 10);
+
+        p1 = p1->pNext;
+        p2 = p2->pNext;
+    }
+    if (p1 == NULL) // l1 <= l2
+    {
+        while (p2)
+        {
+            sum = p2->val + carry;
+            carry = sum / 10;
+            insert(sum % 10);
+            p2 = p2->pNext;
+        }
+    }
+    if (p2 == NULL) // l1 > l2
+    {
+        while (p1)
+        {
+            sum = p1->val + carry;
+            carry = sum / 10;
+            insert(sum % 10);
+            p1 = p1->pNext;
+        }
+    }
+    if (carry)
+    {
+        insert(carry);
+    }
+
+    return pHead;
+}
