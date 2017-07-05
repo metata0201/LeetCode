@@ -13,7 +13,7 @@ void main()
     temp = a;
     while (temp)
     {
-        pHead1 = l1.insert(temp % 10);
+        pHead1 = l1.addFront(temp % 10);
         temp /= 10;
     }
 
@@ -31,7 +31,7 @@ void main()
     temp = b;
     while (temp)
     {
-        pHead2 = l2.insert(temp % 10);
+        pHead2 = l2.addFront(temp % 10);
         temp /= 10;
     }
 

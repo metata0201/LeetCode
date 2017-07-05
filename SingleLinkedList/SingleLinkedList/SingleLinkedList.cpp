@@ -15,13 +15,40 @@ SingleLinkedList::~SingleLinkedList()
     }
 }
 
-// Insert from the front-end, and set it as the head node.
-ListNode* SingleLinkedList::insert(int val)
+// Add node from the front, and set it as head node
+ListNode* SingleLinkedList::addFront(int val)
 {
     ListNode* pNode = new ListNode(val);
-    pNode->pNext = pHead;
-    pHead = pNode;
-    return pHead;
+    if (pHead == NULL && pTail == NULL)
+    {
+        pHead = pNode;
+        pTail = pNode;
+    }
+    else
+    {
+        pNode->pNext = pHead;
+        pHead = pNode;
+    }
+
+    return pNode;
+}
+
+// Add node from the rear, and set it as tail node
+ListNode* SingleLinkedList::addTail(int val)
+{
+    ListNode* pNode = new ListNode(val);
+    if (pHead == NULL && pTail == NULL)
+    {
+        pHead = pNode;
+        pTail = pNode;
+    }
+    else
+    {
+        pTail->pNext = pNode;
+        pTail = pNode;
+    }
+    
+    return pNode;
 }
 
 // Through reversing list l1 and l2
@@ -42,13 +69,13 @@ ListNode* SingleLinkedList::addTwoNumbers_Reverse(ListNode* l1, ListNode* l2)
     ListNode *p1 = l1, *pReverse1 = NULL, *p2 = l2, *pReverse2 = NULL;
     while (p1)  // Reverse l1
     {
-        pReverse1 = reverse1.insert(p1->val);
+        pReverse1 = reverse1.addFront(p1->val);
         p1 = p1->pNext;
     }
 
     while (p2)  // Reverse l2
     {
-        pReverse2 = reverse2.insert(p2->val);
+        pReverse2 = reverse2.addFront(p2->val);
         p2 = p2->pNext;
     }
 
@@ -60,7 +87,7 @@ ListNode* SingleLinkedList::addTwoNumbers_Reverse(ListNode* l1, ListNode* l2)
     {
         sum = p1->val + p2->val + carry;
         carry = sum / 10;
-        insert(sum % 10);
+        addFront(sum % 10);
 
         p1 = p1->pNext;
         p2 = p2->pNext;
@@ -71,7 +98,7 @@ ListNode* SingleLinkedList::addTwoNumbers_Reverse(ListNode* l1, ListNode* l2)
         {
             sum = p2->val + carry;
             carry = sum / 10;
-            insert(sum % 10);
+            addFront(sum % 10);
             p2 = p2->pNext;
         }
     }
@@ -81,13 +108,13 @@ ListNode* SingleLinkedList::addTwoNumbers_Reverse(ListNode* l1, ListNode* l2)
         {
             sum = p1->val + carry;
             carry = sum / 10;
-            insert(sum % 10);
+            addFront(sum % 10);
             p1 = p1->pNext;
         }
     }
     if (carry)
     {
-        insert(carry);
+        addFront(carry);
     }
 
     return pHead;
@@ -138,12 +165,28 @@ ListNode* SingleLinkedList::addTwoNumbers_Stack(ListNode* l1, ListNode* l2)
         sum += carry;
 
         carry = sum / 10;
-        insert(sum % 10);
+        addFront(sum % 10);
     }
     if (carry)
     {
-        insert(carry);
+        addFront(carry);
     }
 
     return pHead;
+}
+
+// Recursive to add two numbers
+ListNode* SingleLinkedList::addTwoNumbers_Recursive(ListNode* l1, ListNode* l2)
+{
+    if ((l1 == NULL) && (l2 == NULL)){
+        return NULL;
+    }
+    else if (l1 == NULL){
+        return l2;
+    }
+    else if (l2 == NULL){
+        return l1;
+    }
+
+
 }
