@@ -48,7 +48,8 @@ void main()
     // Add two numbers
     SingleLinkedList res;
     //ListNode *pRes = res.addTwoNumbers_Reverse(pHead1, pHead2);
-    ListNode *pRes = res.addTwoNumbers_Stack(pHead1, pHead2);
+    //ListNode *pRes = res.addTwoNumbers_Stack(pHead1, pHead2);
+    ListNode *pRes = res.addTwoNumbers_Recursive(pHead1, pHead2);
 
     // Display
     pNode = pRes;

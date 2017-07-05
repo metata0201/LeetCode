@@ -15,6 +15,32 @@ SingleLinkedList::~SingleLinkedList()
     }
 }
 
+// Get the length of the linked list
+int SingleLinkedList::length()
+{
+    ListNode *pNode = pHead;
+    int cnt = 0;
+    while (pNode)
+    {
+        cnt++;
+        pNode = pNode->pNext;
+    }
+    return cnt;
+}
+
+// Get the length from 'pHeadNode' of the linked list
+int SingleLinkedList::length(ListNode *pHeadNode)
+{
+    ListNode *pNode = pHeadNode;
+    int cnt = 0;
+    while (pNode)
+    {
+        cnt++;
+        pNode = pNode->pNext;
+    }
+    return cnt;
+}
+
 // Add node from the front, and set it as head node
 ListNode* SingleLinkedList::addFront(int val)
 {
@@ -188,5 +214,50 @@ ListNode* SingleLinkedList::addTwoNumbers_Recursive(ListNode* l1, ListNode* l2)
         return l1;
     }
 
+    ListNode *pRes = NULL;
+    int len1 = length(l1);
+    int len2 = length(l2);
+    if (len1 >= len2)
+    {
+        pRes = addTwoNumbers(l1, l2, len1 - len2);
+    }
+    else
+    {
+        pRes = addTwoNumbers(l2, l1, len2 - len1);
+    }
+    if (m_nCarry)
+    {
+        ListNode *pNode = new ListNode(m_nCarry);
+        pNode->pNext = pRes;
+        pRes = pNode;
+    }
+    pHead = pRes;
 
+    return pRes;
+}
+
+// Recursive adding function:input l1 is longer than l2
+ListNode* SingleLinkedList::addTwoNumbers(ListNode* l1, ListNode* l2, int diff)
+{
+    if (l1 == NULL && l2 == NULL)
+    {
+        return NULL;
+    }
+
+    ListNode *pNext = NULL;
+    if (diff)
+    {
+        pNext = addTwoNumbers(l1->pNext, l2, diff - 1);
+    }
+    else
+    {
+        pNext = addTwoNumbers(l1->pNext, l2->pNext, 0);
+    }
+    int sum = l1->val + (diff ? 0 : l2->val) + m_nCarry;
+    m_nCarry  = sum / 10;
+    
+    ListNode *pCurr = new ListNode(sum % 10);
+    pCurr->pNext = pNext;
+
+    return pCurr;
 }

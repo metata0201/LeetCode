@@ -14,11 +14,15 @@ public:
     SingleLinkedList() :pHead(nullptr), pTail(nullptr), m_nCarry(0){};
     ~SingleLinkedList();
 public:
+    int length();
+    int length(ListNode *pHeadNode);
     ListNode* addFront(int val);
     ListNode* addTail(int val);
     ListNode* addTwoNumbers_Reverse(ListNode* l1, ListNode* l2);
     ListNode* addTwoNumbers_Stack(ListNode* l1, ListNode* l2);
     ListNode* addTwoNumbers_Recursive(ListNode* l1, ListNode* l2);
+private:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2, int diff);
 
 private:
     ListNode *pHead, *pTail;
