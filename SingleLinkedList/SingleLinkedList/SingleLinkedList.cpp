@@ -261,3 +261,47 @@ ListNode* SingleLinkedList::addTwoNumbers(ListNode* l1, ListNode* l2, int diff)
 
     return pCurr;
 }
+
+// Special code to add two numbers
+ListNode* SingleLinkedList::addTwoNumbers_Special(ListNode* l1, ListNode* l2)
+{
+    if ((l1 == NULL) && (l2 == NULL)){
+        return NULL;
+    }
+    else if (l1 == NULL){
+        return l2;
+    }
+    else if (l2 == NULL){
+        return l1;
+    }
+
+    int len1, len2, sum, carry = 0;
+    len1 = length(l1);
+    len2 = length(l2);
+
+    SingleLinkedList tempList;
+    ListNode *pTempHead = NULL , *p1=l1, *p2=l2;
+    while (len1 > 0 && len2 > 0)
+    {
+        sum = 0;
+        if (len1 >= len2) { sum += p1->val; p1 = p1->pNext; len1--; }
+        if (len2 > len1)  { sum += p2->val; p2 = p2->pNext; len2--; }
+        pTempHead = tempList.addFront(sum);
+    }
+
+    // Reverse temp linked list and process carry bit
+    ListNode *pNode = pTempHead;
+    while (pNode)
+    {
+        sum = pNode->val + carry;
+        carry = sum / 10;
+        addFront(sum % 10);
+        pNode = pNode->pNext;
+    }
+    if (carry)
+    {
+        addFront(carry);
+    }
+
+    return pHead;
+}

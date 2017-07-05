@@ -21,6 +21,7 @@ public:
     ListNode* addTwoNumbers_Reverse(ListNode* l1, ListNode* l2);
     ListNode* addTwoNumbers_Stack(ListNode* l1, ListNode* l2);
     ListNode* addTwoNumbers_Recursive(ListNode* l1, ListNode* l2);
+    ListNode* addTwoNumbers_Special(ListNode* l1, ListNode* l2);
 private:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2, int diff);
 
