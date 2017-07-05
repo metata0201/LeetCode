@@ -16,6 +16,7 @@ public:
 public:
     ListNode* insert(int val);
     ListNode* addTwoNumbers_Reverse(ListNode* l1, ListNode* l2);
+    ListNode* addTwoNumbers_Stack(ListNode* l1, ListNode* l2);
 
 private:
     ListNode *pHead;

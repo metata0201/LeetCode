@@ -1,5 +1,6 @@
 #include "SingleLinkedList.h"
 #include <iostream>
+#include <stack>
 
 using namespace std;
 
@@ -83,6 +84,61 @@ ListNode* SingleLinkedList::addTwoNumbers_Reverse(ListNode* l1, ListNode* l2)
             insert(sum % 10);
             p1 = p1->pNext;
         }
+    }
+    if (carry)
+    {
+        insert(carry);
+    }
+
+    return pHead;
+}
+
+// Through pushing linked list node into stack
+ListNode* SingleLinkedList::addTwoNumbers_Stack(ListNode* l1, ListNode* l2)
+{
+    if ((l1 == NULL) && (l2 == NULL)){
+        return NULL;
+    }
+    else if (l1 == NULL){
+        return l2;
+    }
+    else if (l2 == NULL){
+        return l1;
+    }
+
+    // Push linked list node into stack
+    ListNode *p1 = l1, *p2 = l2;
+    stack<int> stack1, stack2;
+    while (p1)
+    {
+        stack1.push(p1->val);
+        p1 = p1->pNext;
+    }
+    while (p2)
+    {
+        stack2.push(p2->val);
+        p2 = p2->pNext;
+    }
+
+    // Pop stack for adding
+    int sum = 0, carry = 0;
+    while (!(stack1.empty() && stack2.empty()))
+    {
+        sum = 0;
+        if (!stack1.empty())
+        {
+            sum += stack1.top();
+            stack1.pop();
+        }
+        if (!stack2.empty())
+        {
+            sum += stack2.top();
+            stack2.pop();
+        }
+        sum += carry;
+
+        carry = sum / 10;
+        insert(sum % 10);
     }
     if (carry)
     {

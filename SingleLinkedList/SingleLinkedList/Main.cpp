@@ -5,7 +5,7 @@ using namespace std;
 
 void main()
 {
-    int a = 7234, b = 564, temp;
+    int a = 7243, b = 564, temp;
     SingleLinkedList l1, l2;
     ListNode *pHead1 = NULL, *pHead2 = NULL, *pNode = NULL;
 
@@ -47,7 +47,8 @@ void main()
 
     // Add two numbers
     SingleLinkedList res;
-    ListNode *pRes = res.addTwoNumbers_Reverse(pHead1, pHead2);
+    //ListNode *pRes = res.addTwoNumbers_Reverse(pHead1, pHead2);
+    ListNode *pRes = res.addTwoNumbers_Stack(pHead1, pHead2);
 
     // Display
     pNode = pRes;
