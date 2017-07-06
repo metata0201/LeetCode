@@ -15,6 +15,11 @@ SingleLinkedList::~SingleLinkedList()
     }
 }
 
+ListNode* SingleLinkedList::head()
+{
+    return pHead;
+}
+
 // Get the length of the linked list
 int SingleLinkedList::length()
 {

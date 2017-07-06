@@ -1,3 +1,5 @@
+#pragma once
+
 class ListNode
 {
 public:
@@ -14,6 +16,7 @@ public:
     SingleLinkedList() :pHead(nullptr), pTail(nullptr), m_nCarry(0){};
     ~SingleLinkedList();
 public:
+    ListNode* head();
     int length();
     int length(ListNode *pHeadNode);
     ListNode* addFront(int val);
