@@ -28,7 +28,7 @@ bool isPalindrome(ListNode* pHead)
     bool bPalindrome = true;
     if (pHead == nullptr)
     {
-        return false;
+        return true;
     }
 
     // Find the middle of the list through the speed of 'pFast' is twice as the speed of 'pSlow'
