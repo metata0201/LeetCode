@@ -24,3 +24,13 @@ ListNode* reverse(ListNode* pHead);
 */
 ListNode* reverse_Iterative(ListNode* pHead);
 ListNode* reverse_Recursive(ListNode* pHead);
+
+/*203. Remove Linked List Elements
+*Remove all elements from a linked list of integers that have value val.
+*
+*Example
+*Given : 1 --> 2 --> 6 --> 3 --> 4 --> 5 --> 6, val = 6
+*Return: 1 --> 2 --> 3 --> 4 --> 5
+*/
+ListNode* removeElements_Normal(ListNode* pHead, int val);
+ListNode* removeElements_Special(ListNode* pHead, int val);

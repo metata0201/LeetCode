@@ -6,7 +6,7 @@ using namespace std;
 
 void main()
 {
-    int a = 12, temp;
+    int a = 21345, temp;
     SingleLinkedList l;
     ListNode *pHead = NULL, *pNode;
     temp = a;
@@ -25,11 +25,15 @@ void main()
     }
     cout << endl;
 
-    //pNode = reverse_Iterative(pHead);
-    pNode = reverse_Recursive(pHead);
+    //pNode = removeElements_Normal(pHead, 2);
+    pNode = removeElements_Special(pHead, 2);
 
     // Display linked list l1
-    cout << "Reversed list l: ";
+    cout << "Remove 2 from list l: ";
+    if (pNode == NULL)
+    {
+        cout << "empty linked list.";
+    }
     while (pNode)
     {
         cout << pNode->val << " ";

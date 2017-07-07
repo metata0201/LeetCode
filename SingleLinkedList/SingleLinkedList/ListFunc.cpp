@@ -110,3 +110,60 @@ ListNode* reverse_Recursive(ListNode* pHead)
 
     return pNode;
 }
+
+ListNode* removeElements_Normal(ListNode* pHead, int val)
+{
+    if (pHead == nullptr)
+    {
+        return nullptr;
+    }
+
+    ListNode *pNewHead = pHead, *pPre = pHead, *pCurr = pHead->pNext, *pNext;
+    while (pCurr)   // Check from the second node
+    {
+        pNext = pCurr->pNext;
+        if (pCurr->val == val)
+        {
+            pPre->pNext = pNext;
+            delete pCurr;   // Avoid memory leak
+        }
+        else
+        {
+            pPre = pCurr;
+        }
+        pCurr = pNext;
+    }
+
+    // Check the head node
+    if (pHead->val == val)
+    {
+        pNewHead = pHead->pNext;
+        delete pHead;
+    }
+
+    return pNewHead;
+}
+
+// Key point:pointer to pointer
+// ppPreNext -- The address of previous node's 'pNext'
+//*ppPreNext -- The current node's address
+ListNode* removeElements_Special(ListNode* pHead, int val)
+{
+    ListNode **ppPreNext = &pHead;
+    ListNode *pCurr = nullptr;
+
+    while (*ppPreNext != nullptr)
+    {
+        pCurr = *ppPreNext;
+        if (pCurr->val == val)
+        {
+            *ppPreNext = pCurr->pNext;
+            delete pCurr;
+        }
+        else
+        {
+            ppPreNext = &(pCurr->pNext);
+        }
+    }
+    return pHead;
+}
