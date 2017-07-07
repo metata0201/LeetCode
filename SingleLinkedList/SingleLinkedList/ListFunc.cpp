@@ -82,3 +82,17 @@ ListNode* reverse(ListNode* pHead)
     }
     return pHead;
 }
+
+// Return the head node pointer of the reversed linked list
+ListNode* reverse_Iterative(ListNode* pHead)
+{
+    ListNode *pPre = nullptr, *pCurr = pHead, *pTemp;
+    while (pCurr)
+    {
+        pTemp = pCurr->pNext;
+        pCurr->pNext = pPre;
+        pPre = pCurr;
+        pCurr = pTemp;
+    }
+    return pPre;
+}

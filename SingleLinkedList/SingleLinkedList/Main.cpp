@@ -6,7 +6,7 @@ using namespace std;
 
 void main()
 {
-    int a = 1233217, temp;
+    int a = 12, temp;
     SingleLinkedList l;
     ListNode *pHead = NULL, *pNode;
     temp = a;
@@ -25,18 +25,10 @@ void main()
     }
     cout << endl;
 
-    if (isPalindrome(pHead))
-    {
-        cout << a << " is a palindrome." << endl;
-    }
-    else
-    {
-        cout << a << " isn't a palindrome." << endl;
-    }
+    pNode = reverse_Iterative(pHead);
 
     // Display linked list l1
-    pNode = pHead;
-    cout << "linked list l: ";
+    cout << "Reversed list l: ";
     while (pNode)
     {
         cout << pNode->val << " ";
