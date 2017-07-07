@@ -96,3 +96,17 @@ ListNode* reverse_Iterative(ListNode* pHead)
     }
     return pPre;
 }
+
+ListNode* reverse_Recursive(ListNode* pHead)
+{
+    if (pHead==nullptr || pHead->pNext==nullptr)
+    {
+        return pHead;
+    }
+
+    ListNode *pNode = reverse_Recursive(pHead->pNext);
+    pHead->pNext->pNext = pHead;    // first <- Second
+    pHead->pNext = nullptr;
+
+    return pNode;
+}

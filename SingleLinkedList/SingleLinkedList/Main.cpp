@@ -25,7 +25,8 @@ void main()
     }
     cout << endl;
 
-    pNode = reverse_Iterative(pHead);
+    //pNode = reverse_Iterative(pHead);
+    pNode = reverse_Recursive(pHead);
 
     // Display linked list l1
     cout << "Reversed list l: ";

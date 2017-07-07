@@ -23,3 +23,4 @@ ListNode* reverse(ListNode* pHead);
 *A linked list can be reversed either iteratively or recursively.Could you implement both ?
 */
 ListNode* reverse_Iterative(ListNode* pHead);
+ListNode* reverse_Recursive(ListNode* pHead);
