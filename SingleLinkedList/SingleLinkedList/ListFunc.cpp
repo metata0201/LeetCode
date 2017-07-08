@@ -212,3 +212,14 @@ ListNode *getIntersectionNode_Normal(ListNode *pHeadA, ListNode *pHeadB)
 
     return pLongListHead;
 }
+
+ListNode *getIntersectionNode_Special(ListNode *pHeadA, ListNode *pHeadB)
+{
+    ListNode *pCurrA = pHeadA, *pCurrB = pHeadB;
+    while (pCurrA != pCurrB)
+    {
+        pCurrA = pCurrA ? pCurrA->pNext : pHeadB;
+        pCurrB = pCurrB ? pCurrB->pNext : pHeadA;
+    }
+    return pCurrA;
+}

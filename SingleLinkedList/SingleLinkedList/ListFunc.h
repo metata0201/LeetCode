@@ -54,3 +54,4 @@ ListNode* removeElements_Special(ListNode* pHead, int val);
 */
 int length(ListNode *pHead);
 ListNode *getIntersectionNode_Normal(ListNode *pHeadA, ListNode *pHeadB);
+ListNode *getIntersectionNode_Special(ListNode *pHeadA, ListNode *pHeadB);
