@@ -167,3 +167,48 @@ ListNode* removeElements_Special(ListNode* pHead, int val)
     }
     return pHead;
 }
+
+// Calculate the length of the linked list
+int length(ListNode *pHead)
+{
+    ListNode *pCurr = pHead;
+    int cnt = 0;
+    while (pCurr)
+    {
+        cnt++;
+        pCurr = pCurr->pNext;
+    }
+    return cnt;
+}
+
+ListNode *getIntersectionNode_Normal(ListNode *pHeadA, ListNode *pHeadB)
+{
+    // Calcualte the length of two linked list
+    int cntA = 0, cntB = 0;
+    cntA = length(pHeadA);
+    cntB = length(pHeadB);
+
+    ListNode *pLongListHead = pHeadA, *pShortListHead = pHeadB;
+    if (cntA < cntB)
+    {
+        pLongListHead  = pHeadB;
+        pShortListHead = pHeadA;
+    }
+
+    // Adjust the long list head
+    int diff = (cntA >= cntB) ? (cntA - cntB) : (cntB - cntA);
+    while (diff > 0)
+    {
+        pLongListHead = pLongListHead->pNext;
+        diff--;
+    }
+
+    // Comparison
+    while (pLongListHead != pShortListHead)
+    {
+        pLongListHead  = pLongListHead->pNext;
+        pShortListHead = pShortListHead->pNext;
+    }
+
+    return pLongListHead;
+}
