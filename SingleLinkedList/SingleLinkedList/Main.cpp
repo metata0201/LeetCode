@@ -6,7 +6,7 @@ using namespace std;
 
 void main()
 {
-    int a = 21345, temp;
+    int a = 73962841, temp;
     SingleLinkedList l;
     ListNode *pHead = NULL, *pNode;
     temp = a;
@@ -17,7 +17,7 @@ void main()
     }
     // Display linked list l1
     pNode = pHead;
-    cout << "linked list l: ";
+    cout << "linked list: ";
     while (pNode)
     {
         cout << pNode->val << " ";
@@ -25,11 +25,10 @@ void main()
     }
     cout << endl;
 
-    //pNode = removeElements_Normal(pHead, 2);
-    pNode = removeElements_Special(pHead, 2);
+    pNode = sortList(pHead);
 
     // Display linked list l1
-    cout << "Remove 2 from list l: ";
+    cout << "Sort list in ascending order: ";
     if (pNode == NULL)
     {
         cout << "empty linked list.";

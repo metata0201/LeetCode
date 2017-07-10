@@ -223,3 +223,76 @@ ListNode *getIntersectionNode_Special(ListNode *pHeadA, ListNode *pHeadB)
     }
     return pCurrA;
 }
+
+ListNode* sortList(ListNode* pHead)
+{
+    if (pHead==nullptr || pHead->pNext==nullptr)
+    {
+        return pHead;
+    }
+
+    int len = length(pHead);
+
+    ListNode *pHead1, *pHead2, *pTail, *pCurr;
+    ListNode dummyHead(0);
+    dummyHead.pNext = pHead;
+    for (int step = 1; step < len; step = (step << 1))
+    {
+        pCurr = dummyHead.pNext;
+        pTail = &dummyHead;
+        while (pCurr)
+        {
+            pHead1 = pCurr;
+            pHead2 = split(pHead1, step);
+            pCurr = split(pHead2, step);
+            pTail = merge(pHead1, pHead2, pTail);
+        }
+    }
+
+    return dummyHead.pNext;
+}
+
+// pHead     ---- Linked list head node
+// groupSize ---- Divide linked list into small linked lists, whose lengths are all 'groupSize'
+// Return next samll linked list head node.
+ListNode* split(ListNode* pHead, int groupSize)
+{
+    for (int i = 1; (pHead != nullptr) && (i < groupSize); i++)
+    {
+        pHead = pHead->pNext;
+    }
+
+    if (pHead == nullptr) { return nullptr; }
+
+    ListNode *pSecondHead = pHead->pNext;
+    pHead->pNext = nullptr;
+    return pSecondHead;
+}
+
+// Merge 'list1' and 'list2' in ascending order.
+ListNode* merge(ListNode* pHead1, ListNode* pHead2, ListNode *pMergedTail)
+{
+    while (pHead1 && pHead2)
+    {
+        if (pHead1->val <= pHead2->val)
+        {
+            pMergedTail->pNext = pHead1;
+            pMergedTail = pHead1;
+            pHead1 = pHead1->pNext;
+        }
+        else
+        {
+            pMergedTail->pNext = pHead2;
+            pMergedTail = pHead2;
+            pHead2 = pHead2->pNext;
+        }
+    }
+
+    pMergedTail->pNext = pHead1 ? pHead1 : pHead2;
+    while (pMergedTail->pNext)
+    {
+        pMergedTail = pMergedTail->pNext;
+    }
+
+    return pMergedTail;
+}

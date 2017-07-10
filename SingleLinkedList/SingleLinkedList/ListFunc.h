@@ -55,3 +55,10 @@ ListNode* removeElements_Special(ListNode* pHead, int val);
 int length(ListNode *pHead);
 ListNode *getIntersectionNode_Normal(ListNode *pHeadA, ListNode *pHeadB);
 ListNode *getIntersectionNode_Special(ListNode *pHeadA, ListNode *pHeadB);
+
+/*148. Sort List
+*Sort a linked list in O(n*log n) time using constant space complexity.
+*/
+ListNode* sortList(ListNode* pHead);
+ListNode* split(ListNode* pHead, int groupSize);
+ListNode* merge(ListNode* pHead1, ListNode* pHead2, ListNode *pMergedTail);
