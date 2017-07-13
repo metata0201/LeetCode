@@ -224,6 +224,7 @@ ListNode *getIntersectionNode_Special(ListNode *pHeadA, ListNode *pHeadB)
     return pCurrA;
 }
 
+// Bottom-to-up and use divide-and-conquer method.
 ListNode* sortList(ListNode* pHead)
 {
     if (pHead==nullptr || pHead->pNext==nullptr)

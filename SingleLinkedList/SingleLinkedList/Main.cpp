@@ -1,42 +1,40 @@
 #include "SingleLinkedList.h"
 #include "ListFunc.h"
+#include "ArrayFunc.h"
 #include <iostream>
 
 using namespace std;
 
 void main()
 {
-    int a = 73962841, temp;
-    SingleLinkedList l;
-    ListNode *pHead = NULL, *pNode;
-    temp = a;
-    while (temp)
+    int a[] = { 1, 5, 9, 12, 20 }, b[] = { 3, 6, 8 };
+    vector<int> vectorA(20, 0), vectorB(b, b+3);
+    int i, j;
+    for (i = 0; i < 5; i++)
     {
-        pHead = l.addFront(temp % 10);
-        temp /= 10;
+        vectorA[i] = a[i];
     }
-    // Display linked list l1
-    pNode = pHead;
-    cout << "linked list: ";
-    while (pNode)
+
+    cout << "vector A:";
+    for (i = 0; i < 20; i++)
     {
-        cout << pNode->val << " ";
-        pNode = pNode->pNext;
+        cout << vectorA[i] << " ";
     }
     cout << endl;
 
-    pNode = sortList(pHead);
-
-    // Display linked list l1
-    cout << "Sort list in ascending order: ";
-    if (pNode == NULL)
+    cout << "vector B:";
+    for (i = 0; i < 3; i++)
     {
-        cout << "empty linked list.";
+        cout << vectorB[i] << " ";
     }
-    while (pNode)
+    cout << endl;
+
+    merge(vectorA, 5, vectorB, 3);
+
+    cout << "merged vector A:";
+    for (i = 0; i < 20; i++)
     {
-        cout << pNode->val << " ";
-        pNode = pNode->pNext;
+        cout << vectorA[i] << " ";
     }
     cout << endl;
 }
