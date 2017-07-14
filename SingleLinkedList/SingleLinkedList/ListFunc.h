@@ -62,3 +62,9 @@ ListNode *getIntersectionNode_Special(ListNode *pHeadA, ListNode *pHeadB);
 ListNode* sortList(ListNode* pHead);
 ListNode* split(ListNode* pHead, int groupSize);
 ListNode* merge(ListNode* pHead1, ListNode* pHead2, ListNode *pMergedTail);
+
+/*21. Merge Two Sorted Lists
+*Merge two sorted linked lists and return it as a new list.The new list should be made by
+*splicing together the nodes of the first two lists.
+*/
+ListNode* mergeTwoLists(ListNode* l1, ListNode* l2);

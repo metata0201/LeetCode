@@ -297,3 +297,29 @@ ListNode* merge(ListNode* pHead1, ListNode* pHead2, ListNode *pMergedTail)
 
     return pMergedTail;
 }
+
+ListNode* mergeTwoLists(ListNode* l1, ListNode* l2)
+{
+    ListNode dummyHead(0);
+    ListNode *p = &dummyHead;
+
+    while (l1 != nullptr && l2 != nullptr)
+    {
+        if (l1->val <= l2->val)
+        {
+            p->pNext = l1;
+            l1 = l1->pNext;
+        }
+        else
+        {
+            p->pNext = l2;
+            l2 = l2->pNext;
+        }
+        p = p->pNext;
+    }
+
+    // Merge the rest of sorted list l1 or l2
+    p->pNext = l1 ? l1 : l2;
+
+    return dummyHead.pNext;
+}

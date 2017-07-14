@@ -7,34 +7,54 @@ using namespace std;
 
 void main()
 {
-    int a[] = { 1, 5, 9, 12, 20 }, b[] = { 3, 6, 8 };
-    vector<int> vectorA(20, 0), vectorB(b, b+3);
-    int i, j;
-    for (i = 0; i < 5; i++)
+    int a = 13579, b = 2468, temp;;
+
+    SingleLinkedList l1, l2;
+    ListNode *pHead1 = NULL, *pHead2 = NULL, *pNode = NULL;
+
+    temp = a;
+    while (temp)
     {
-        vectorA[i] = a[i];
+        pHead1 = l1.addFront(temp % 10);
+        temp /= 10;
     }
 
-    cout << "vector A:";
-    for (i = 0; i < 20; i++)
+    // Display linked list l1
+    pNode = pHead1;
+    cout << "linked list l1: ";
+    while (pNode)
     {
-        cout << vectorA[i] << " ";
+        cout << pNode->val << " ";
+        pNode = pNode->pNext;
     }
     cout << endl;
 
-    cout << "vector B:";
-    for (i = 0; i < 3; i++)
+    temp = b;
+    while (temp)
     {
-        cout << vectorB[i] << " ";
+        pHead2 = l2.addFront(temp % 10);
+        temp /= 10;
+    }
+
+    // Display linked list l2
+    pNode = pHead2;
+    cout << "linked list l2: ";
+    while (pNode)
+    {
+        cout << pNode->val << " ";
+        pNode = pNode->pNext;
     }
     cout << endl;
 
-    merge(vectorA, 5, vectorB, 3);
+    ListNode *pHead = mergeTwoLists(pHead1, pHead2);
 
-    cout << "merged vector A:";
-    for (i = 0; i < 20; i++)
+    // Display the merged result 
+    pNode = pHead;
+    cout << "Merge l1 and l2:";
+    while (pNode)
     {
-        cout << vectorA[i] << " ";
+        cout << pNode->val << " ";
+        pNode = pNode->pNext;
     }
     cout << endl;
 }
