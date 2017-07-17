@@ -1,4 +1,8 @@
 #include "ListFunc.h"
+#include <vector>
+#include <algorithm>
+
+using namespace std;
 
 // Remove the next node after copying its data into the node that we were asked to delete.
 void deleteNode_Normal(ListNode* pNode)
@@ -322,4 +326,70 @@ ListNode* mergeTwoLists(ListNode* l1, ListNode* l2)
     p->pNext = l1 ? l1 : l2;
 
     return dummyHead.pNext;
+}
+
+// For God's sake, don't try sorting a linked list during the interview.
+ListNode* insertionSortList(ListNode* head)
+{
+    if (head == nullptr || head->pNext == nullptr)
+    {
+        return head;
+    }
+
+    ListNode dummyHead(0);
+    dummyHead.pNext = head;
+    ListNode *pre = &dummyHead, *cur = head;
+
+    while (cur != nullptr)
+    {
+        if (cur->pNext!=nullptr && (cur->pNext)->val < cur->val)
+        {
+            while (pre->pNext!=nullptr && (pre->pNext)->val < (cur->pNext)->val)
+            {
+                pre = pre->pNext;
+            }
+            // Insert (cur->next) after pre
+            ListNode *tmp = cur->pNext->pNext;
+            cur->pNext->pNext = pre->pNext;
+            pre->pNext = cur->pNext;
+            cur->pNext = tmp;
+            // Move pre back to dummyHead
+            pre = &dummyHead;
+        }
+        else
+        {
+            cur = cur->pNext;
+        }
+    }
+
+    return dummyHead.pNext;
+}
+
+ListNode* insertionSortList_Vector(ListNode* head)
+{
+    if (head == nullptr || head->pNext == nullptr)
+    {
+        return head;
+    }
+
+    ListNode *pCurr = head;
+    vector<int> data;
+    while (pCurr != nullptr)    // Copy the linked list val
+    {
+        data.push_back(pCurr->val);
+        pCurr = pCurr->pNext;
+    }
+
+    // Sort the vector
+    sort(data.begin(), data.end());
+
+    // Copy the sorted vector back to the linked list.
+    pCurr = head;
+    for (int i = 0; i < data.size(); i++)
+    {
+        pCurr->val = data[i];
+        pCurr = pCurr->pNext;
+    }
+
+    return head;
 }

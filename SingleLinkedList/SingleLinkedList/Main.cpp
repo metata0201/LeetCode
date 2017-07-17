@@ -7,10 +7,10 @@ using namespace std;
 
 void main()
 {
-    int a = 13579, b = 2468, temp;;
+    int a = 73521, temp;
 
-    SingleLinkedList l1, l2;
-    ListNode *pHead1 = NULL, *pHead2 = NULL, *pNode = NULL;
+    SingleLinkedList l1;
+    ListNode *pHead1 = NULL, *pNode = NULL;
 
     temp = a;
     while (temp)
@@ -29,28 +29,12 @@ void main()
     }
     cout << endl;
 
-    temp = b;
-    while (temp)
-    {
-        pHead2 = l2.addFront(temp % 10);
-        temp /= 10;
-    }
-
-    // Display linked list l2
-    pNode = pHead2;
-    cout << "linked list l2: ";
-    while (pNode)
-    {
-        cout << pNode->val << " ";
-        pNode = pNode->pNext;
-    }
-    cout << endl;
-
-    ListNode *pHead = mergeTwoLists(pHead1, pHead2);
+    //pHead1 = insertionSortList(pHead1);
+    pHead1 = insertionSortList_Vector(pHead1);
 
     // Display the merged result 
-    pNode = pHead;
-    cout << "Merge l1 and l2:";
+    pNode = pHead1;
+    cout << "Insertion sort of l1:";
     while (pNode)
     {
         cout << pNode->val << " ";

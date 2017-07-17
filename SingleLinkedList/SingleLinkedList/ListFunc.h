@@ -68,3 +68,9 @@ ListNode* merge(ListNode* pHead1, ListNode* pHead2, ListNode *pMergedTail);
 *splicing together the nodes of the first two lists.
 */
 ListNode* mergeTwoLists(ListNode* l1, ListNode* l2);
+
+/*147. Insertion Sort List
+Sort a linked list using insertion sort.
+*/
+ListNode* insertionSortList(ListNode* head);
+ListNode* insertionSortList_Vector(ListNode* head);
