@@ -7,7 +7,7 @@ using namespace std;
 
 void main()
 {
-    int a = 73521, temp;
+    int a = 123456, temp;
 
     SingleLinkedList l1;
     ListNode *pHead1 = NULL, *pNode = NULL;
@@ -29,12 +29,11 @@ void main()
     }
     cout << endl;
 
-    //pHead1 = insertionSortList(pHead1);
-    pHead1 = insertionSortList_Vector(pHead1);
+    reorderList(pHead1);
 
-    // Display the merged result 
+    // Display the reorder result 
     pNode = pHead1;
-    cout << "Insertion sort of l1:";
+    cout << "Reorder result:";
     while (pNode)
     {
         cout << pNode->val << " ";

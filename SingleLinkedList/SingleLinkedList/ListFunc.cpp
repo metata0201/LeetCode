@@ -393,3 +393,35 @@ ListNode* insertionSortList_Vector(ListNode* head)
 
     return head;
 }
+
+void reorderList(ListNode* head)
+{
+    if (head == nullptr || head->pNext == nullptr || head->pNext->pNext==nullptr)
+    {
+        return;
+    }
+
+    // Use speed to locate the middle of the linked list
+    ListNode *pSlow = head, *pFast = head;
+    while (pFast->pNext && pFast->pNext->pNext)
+    {
+        pSlow = pSlow->pNext;
+        pFast = pFast->pNext->pNext;
+    }
+
+    // Split into two linked list, and reverse the second
+    ListNode *pSecond = reverse_Iterative(pSlow->pNext);
+    pSlow->pNext = nullptr;
+
+    // Merge the two linked lists to do the reorder
+    ListNode *pFirst = head, *pNext1 = nullptr, *pNext2 = nullptr;
+    while (pSecond)
+    {
+        pNext1 = pFirst->pNext;
+        pNext2 = pSecond->pNext;
+        pFirst->pNext  = pSecond;
+        pSecond->pNext = pNext1;
+        pFirst  = pNext1;
+        pSecond = pNext2;
+    }
+}
