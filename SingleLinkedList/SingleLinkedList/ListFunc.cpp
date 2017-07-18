@@ -425,3 +425,35 @@ void reorderList(ListNode* head)
         pSecond = pNext2;
     }
 }
+
+// Floyd's cycle detection algorithm(AKA hare-tortoise algorithm).
+ListNode *detectCycle(ListNode *head)
+{
+    ListNode *pSlow = head, *pFast = head;
+    while (pFast)
+    {
+        if (pFast->pNext && pFast->pNext->pNext)
+        {
+            pSlow = pSlow->pNext;
+            pFast = pFast->pNext->pNext;
+            if (pSlow == pFast)     // If there is a circle, 'pSlow' and 'pFast' should meet each other in the circle
+            {
+                break;
+            }
+        }
+        else
+        {
+            return nullptr;         // If there is no circle
+        }
+    }
+
+    // Restart 'pSlow' from the start node, both 'pSlow' and 'pFast' walk one step at a time, they will meet at entry node of the circle
+    pSlow = head;
+    while (pSlow != pFast)
+    {
+        pSlow = pSlow->pNext;
+        pFast = pFast->pNext;
+    }
+
+    return pSlow;
+}
