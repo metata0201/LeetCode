@@ -457,3 +457,30 @@ ListNode *detectCycle(ListNode *head)
 
     return pSlow;
 }
+
+// Floyd's cycle detection algorithm(AKA hare-tortoise algorithm).
+bool hasCycle(ListNode *head)
+{
+    if (head == nullptr || head->pNext == nullptr)
+    {
+        return false;
+    }
+
+    ListNode *pSlow = head, *pFast = head;
+    while (pFast != nullptr)
+    {
+        if (pFast->pNext && pFast->pNext->pNext)
+        {
+            pSlow = pSlow->pNext;
+            pFast = pFast->pNext->pNext;
+            if (pSlow == pFast) // If there is a circle, 'pSlow' and 'pFast' should meet each other in the circle
+            {
+                return true;
+            }
+        }
+        else
+        {
+            return false;       // If there is no circle
+        }
+    }
+}
