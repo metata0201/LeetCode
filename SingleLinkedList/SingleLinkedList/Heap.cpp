@@ -35,29 +35,31 @@ int MinHeap::deleteMin()
         return -1;
     }
 
-    int ret = heap.front(); // Root node has the smallest value
-
-    int val = heap.back();
+    // Root node has the smallest value
+    int ret = heap.front(), val = heap.back();
     heap.pop_back();
 
     // Maintain the min heap property
-    int i, j;
-    for (i = 0, j = 2*i + 1; j < heap.size(); )
+    if (!heap.empty())
     {
-        if (j < heap.size()-1)
+        int i = 0, j;
+        for (j = 2 * i + 1; j < heap.size();)
         {
-            if (heap[j] > heap[j + 1])
-                j++;
+            if (j + 1 < heap.size())
+            {
+                if (heap[j] > heap[j + 1])
+                    j++;
+            }
+
+            // 'j' points to the smaller child
+            if (val <= heap[j]) { break; }
+
+            heap[i] = heap[j];
+            i = j;
+            j = 2 * i + 1;
         }
-
-        // 'j' points to the smaller child
-        if (val <= heap[j]) { break; }
-
-        heap[i] = heap[j];
-        i = j;
-        j = 2 * i + 1;
+        heap[i] = val;
     }
-    heap[i] = val;
 
     return ret;
 }
@@ -119,22 +121,24 @@ int MaxHeap::deleteMax()
     heap.pop_back();
 
     // Maintain the max heap property
-    int i = 0, j;
-    for ( j = (i<<1)+1; j < heap.size(); )
+    if (!heap.empty())
     {
-        if (j+1 < heap.size())
+        int i = 0, j;
+        for (j = (i << 1) + 1; j < heap.size();)
         {
-            if (heap[j] < heap[j + 1])
-                j++;    // 'j' point to the larger chid
-        }
-        if (val >= heap[j])
-            break;
+            if (j + 1 < heap.size())
+            {
+                if (heap[j] < heap[j + 1])
+                    j++;    // 'j' point to the larger chid
+            }
+            if (val >= heap[j]) { break; }
 
-        heap[i] = heap[j];
-        i = j;
-        j = (i << 1) + 1;
+            heap[i] = heap[j];
+            i = j;
+            j = (i << 1) + 1;
+        }
+        heap[i] = val;
     }
-    heap[i] = val;
 
     return ret;
 }
