@@ -96,14 +96,13 @@ void MaxHeap::insert(int val)
     heap.push_back(val);
 
     int i, j = heap.size() - 1;
-    for (i = (j-1)>>1; i >= 0; )
+    while (j > 0)
     {
+        i = (j - 1) >> 1;
         if (val <= heap[i])
             break;
-
         heap[j] = heap[i];
         j = i;
-        i = (j - 1) >> 1;
     }
     heap[j] = val;
 }
