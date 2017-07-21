@@ -1,43 +1,24 @@
 #include "SingleLinkedList.h"
 #include "ListFunc.h"
 #include "ArrayFunc.h"
+#include "Heap.h"
 #include <iostream>
 
 using namespace std;
 
 void main()
 {
-    int a = 123456, temp;
+    int arr[10] = { 35, 33, 42, 10, 14, 19, 27, 44, 26, 31 };
 
-    SingleLinkedList l1;
-    ListNode *pHead1 = NULL, *pNode = NULL;
+    //MinHeap minHeap(arr, 10);
+    //minHeap.print();
+    //
+    //cout << "The smallest item:" << minHeap.deleteMin() << endl;
+    //minHeap.print();
 
-    temp = a;
-    while (temp)
-    {
-        pHead1 = l1.addFront(temp % 10);
-        temp /= 10;
-    }
+    MaxHeap maxHeap(arr, 10);
+    maxHeap.print();
 
-    // Display linked list l1
-    pNode = pHead1;
-    cout << "linked list l1: ";
-    while (pNode)
-    {
-        cout << pNode->val << " ";
-        pNode = pNode->pNext;
-    }
-    cout << endl;
-
-    reorderList(pHead1);
-
-    // Display the reorder result 
-    pNode = pHead1;
-    cout << "Reorder result:";
-    while (pNode)
-    {
-        cout << pNode->val << " ";
-        pNode = pNode->pNext;
-    }
-    cout << endl;
+    cout << "The largest item:" << maxHeap.deleteMax() << endl;
+    maxHeap.print();
 }
