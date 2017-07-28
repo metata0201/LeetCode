@@ -10,6 +10,6 @@ using namespace std;
 
 void main()
 {
-    vector<int> arr = { 11, 41, -9046, 2047, 1118, 8477, 8446, 279, 4925, 7380, -1719, 3855 };
-    int sum = arrayPairSum_Special(arr);
+    int a = 5;
+    int ret = findComplement_Special(a);
 }
