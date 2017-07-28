@@ -1,12 +1,27 @@
 #include <vector>
+#include <queue>
+#include <algorithm>
 
 using namespace std;
-
-/*88. Merge Sorted Array
-*Given two sorted integer arrays(suppose in ascending order) nums1 and nums2, merge nums2 into nums1 as one sorted array.
+/*164. Maximum Gap
+*Given an unsorted array, find the maximum difference between the successive elements in its sorted form.
 *
-*Note:
-*You may assume that nums1 has enough space(size that is greater or equal to m + n) to hold additional elements from nums2.
-*The number of elements initialized in nums1 and nums2 are m and n respectively.
+*Try to solve it in linear time / space.
+*Return 0 if the array contains less than 2 elements.
+*You may assume all elements in the array are non - negative integers and fit in the 32 - bit signed integer range.
 */
-void merge(vector<int>& nums1, int m, vector<int>& nums2, int n);
+int maximumGap(vector<int>& nums);
+
+/*561. Array Partition I
+*Given an array of 2n integers, your task is to group these integers into n pairs of integer, say(a1, b1),
+*(a2, b2), ..., (an, bn) which makes sum of min(ai, bi) for all i from 1 to n as large as possible.
+*Example 1:
+*Input : [1, 4, 3, 2]
+*Output: 4
+*Explanation : n is 2, and the maximum sum of pairs is 4 = min(1, 2) + min(3, 4).
+*Note :
+*      n is a positive integer, which is in the range of[1, 10000].
+*      All the integers in the array will be in the range of[-10000, 10000].
+*/
+int arrayPairSum(vector<int>& nums);
+int arrayPairSum_Special(vector<int>& nums);

@@ -10,7 +10,6 @@ using namespace std;
 
 void main()
 {
-    vector<string> input = { "Hello", "Alaska", "Dad", "Peace" };
-    vector<string> output = findWords(input);
-    //vector<string> output = findWords_Special(input);
+    vector<int> arr = { 11, 41, -9046, 2047, 1118, 8477, 8446, 279, 4925, 7380, -1719, 3855 };
+    int sum = arrayPairSum_Special(arr);
 }
