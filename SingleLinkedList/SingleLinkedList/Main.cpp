@@ -3,13 +3,14 @@
 #include "ArrayFunc.h"
 #include "Heap.h"
 #include "OtherFunc.h"
+#include "StrFunc.h"
 #include <iostream>
 
 using namespace std;
 
 void main()
 {
-    int x = 1, y = 4;
-    int cnt = hammingDistance(x, y);
-    cout << "Hamming distance between " << x << " and " << y << " is " << cnt << endl;
+    vector<string> input = { "Hello", "Alaska", "Dad", "Peace" };
+    vector<string> output = findWords(input);
+    //vector<string> output = findWords_Special(input);
 }
