@@ -5,11 +5,14 @@
 #include "OtherFunc.h"
 #include "StrFunc.h"
 #include <iostream>
+#include <thread>
 
 using namespace std;
 
 void main()
 {
-    int a = 5;
-    int ret = findComplement_Special(a);
+    string input("Let's take LeetCode contest");
+    string output = reverseWords_Special(input);
+    cout << output << endl;
+    system("pause");
 }

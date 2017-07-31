@@ -41,3 +41,46 @@ vector<string> findWords_Special(vector<string>& words)
     }
     return ret;
 }
+
+string reverseWords(string s)
+{
+    string ret, word;
+    stack<char> S;
+
+    // Push each characters into the stack
+    for (int i = 0; i < s.size(); i++)
+    {
+        S.push(s[i]);
+    }
+
+    while (!S.empty())
+    {
+        if (S.top() != ' ') { word.push_back(S.top()); }    // compose every reversed word
+        else
+        {
+            word.insert(word.begin(), ' ');
+            ret.insert(0, word);
+            word.clear();
+        }
+        S.pop();
+    }
+    ret.insert(0, word);    // Insert the last word
+
+    return ret;
+}
+
+string reverseWords_Special(string s)
+{
+    int i, j;
+    for (i = 0; i < s.size(); i++)
+    {
+        if (s[i] != ' ')
+        {
+            j = i;
+            while (j < s.size() && s[j] != ' ') { j++; }
+            reverse(s.begin() + i, s.begin() + j);
+            i = j;
+        }
+    }
+    return s;
+}
