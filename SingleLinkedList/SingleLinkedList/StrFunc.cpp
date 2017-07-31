@@ -78,6 +78,7 @@ string reverseWords_Special(string s)
         {
             j = i;
             while (j < s.size() && s[j] != ' ') { j++; }
+            // 'i' is the start of a word, j is the index of space character the following the last character of the word.
             reverse(s.begin() + i, s.begin() + j);
             i = j;
         }
