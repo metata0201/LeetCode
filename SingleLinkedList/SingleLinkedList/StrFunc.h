@@ -30,3 +30,12 @@ vector<string> findWords_Special(vector<string>& words);
 */
 string reverseWords(string s);
 string reverseWords_Special(string s);
+
+/*344. Reverse String
+*Write a function that takes a string as input and returns the string reversed.
+*
+*Example:
+*Given s = "hello", return "olleh".
+*/
+string reverseString_Basic(string s);
+string reverseString_Library(string s);

@@ -85,3 +85,18 @@ string reverseWords_Special(string s)
     }
     return s;
 }
+
+string reverseString_Basic(string s)
+{
+    for (int i = 0, j=s.size()-1; i < j; i++, j--)
+    {
+        swap(s[i], s[j]);
+    }
+    return s;
+}
+
+string reverseString_Library(string s)
+{
+    reverse(s.begin(), s.end());
+    return s;
+}

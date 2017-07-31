@@ -11,6 +11,6 @@ using namespace std;
 
 void main()
 {
-    vector<int> candies = { 1, 1, 2, 2, 3, 3 , 4, 5};
-    int maxKinds = distributeCandies_Special(candies);
+    string str("hello");
+    string outStr = reverseString_Library(str);
 }
