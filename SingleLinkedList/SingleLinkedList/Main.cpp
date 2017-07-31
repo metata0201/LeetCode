@@ -11,8 +11,6 @@ using namespace std;
 
 void main()
 {
-    string input("Let's take LeetCode contest");
-    string output = reverseWords_Special(input);
-    cout << output << endl;
-    system("pause");
+    vector<vector<int>> a = { { 1, 2 }, { 3, 4 } };
+    vector<vector<int>> b = matrixReshape_Special(a, 1, 4);
 }

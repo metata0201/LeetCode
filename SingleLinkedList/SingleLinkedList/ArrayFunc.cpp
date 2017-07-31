@@ -78,3 +78,44 @@ int arrayPairSum_Special(vector<int>& nums)
 
     return sum;
 }
+
+vector<vector<int>> matrixReshape(vector<vector<int>>& nums, int r, int c)
+{
+    int i, j, k = 0, cnt = 0;
+
+    // calculate the number of elements in the two-dimensional array.
+    for (i = 0; i < nums.size(); i++) { cnt += nums[i].size(); }
+
+    if (cnt != r*c) { return nums; }
+
+    // Initialization
+    vector<vector<int>> ret(r);
+
+    // Reshape the matrix
+    cnt = 0;
+    for (i = 0; i < nums.size(); i++)
+    {
+        for (j = 0; j < nums[i].size(); j++)
+        {
+            ret[k].push_back(nums[i][j]);
+            if (++cnt % c == 0) { k++; }
+        }
+    }
+    return ret;
+}
+
+vector<vector<int>> matrixReshape_Special(vector<vector<int>>& nums, int r, int c)
+{
+    int m = nums.size(), n = nums[0].size();
+    if (r*c != m*n) { return nums; }
+
+    // Initialization
+    vector<vector<int>> ret(r, vector<int>(c, 0));
+
+    // Reshape
+    for (int i = 0; i < m*n; i++)
+    {
+        ret[i/c][i%c] = nums[i/n][i%n]; // Row index = i / Columns, column index = i % Columns
+    }
+    return ret;
+}
