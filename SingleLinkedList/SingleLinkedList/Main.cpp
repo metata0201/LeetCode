@@ -11,6 +11,6 @@ using namespace std;
 
 void main()
 {
-    vector<vector<int>> a = { { 1, 2 }, { 3, 4 } };
-    vector<vector<int>> b = matrixReshape_Special(a, 1, 4);
+    vector<int> candies = { 1, 1, 2, 2, 3, 3 , 4, 5};
+    int maxKinds = distributeCandies_Special(candies);
 }

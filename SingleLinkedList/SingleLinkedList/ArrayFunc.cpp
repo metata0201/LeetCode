@@ -119,3 +119,30 @@ vector<vector<int>> matrixReshape_Special(vector<vector<int>>& nums, int r, int 
     }
     return ret;
 }
+
+int distributeCandies(vector<int>& candies)
+{
+    vector<int> buckets(200001, 0);
+    for (int i = 0; i < candies.size(); i++)
+    {
+        buckets[candies[i] + 100000]++;
+    }
+
+    // Count how many kinds of candies
+    int kinds = 0;
+    for (int i = 0; i < buckets.size(); i++)
+    {
+        if (buckets[i] > 0) { kinds++; }
+    }
+
+    if ((candies.size() >> 1) <= kinds)
+        return candies.size() >> 1;
+    else
+        return kinds;
+}
+
+int distributeCandies_Special(vector<int>& candies)
+{
+    unordered_set<int> kinds(candies.begin(), candies.end()); // unordered_set range constructor
+    return min(kinds.size(), candies.size() / 2);   // Distribute these candies equally
+}
