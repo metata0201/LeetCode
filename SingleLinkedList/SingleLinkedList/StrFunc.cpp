@@ -125,3 +125,29 @@ vector<string> fizzBuzz(int n)
     }
     return ret;
 }
+
+string complexNumberMultiply(string a, string b)
+{
+    int realA, realB, imagA, imagB, index;
+
+    index = a.find('+');
+    realA = stoi(a.substr(0, index), nullptr, 10);
+    imagA = stoi(a.substr(index + 1, a.size() - index - 2), nullptr, 10);
+
+    index = b.find('+');
+    realB = stoi(b.substr(0, index), nullptr, 10);
+    imagB = stoi(b.substr(index + 1, b.size() - index - 2), nullptr, 10);
+
+    return to_string(realA*realB - imagA*imagB) + "+" + to_string(realA*imagB + realB*imagA) + "i";
+}
+
+string complexNumberMultiply_Special(string a, string b)
+{
+    int ra, ia, rb, ib;
+    char c;
+    stringstream streamA(a), streamB(b), streamC;
+    streamA >> ra >> c >> ia >> c;  // if a = 1+-1i,then ra=1, c='+', ia=-1, c='i'
+    streamB >> rb >> c >> ib >> c;
+    streamC << ra*rb - ia*ib << "+" << ra*ib + rb*ia << "i";
+    return streamC.str();
+}

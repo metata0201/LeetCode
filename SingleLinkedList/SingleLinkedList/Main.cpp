@@ -11,6 +11,6 @@ using namespace std;
 
 void main()
 {
-    string str("hello");
-    string outStr = reverseString_Library(str);
+    string a("1+1i"), b("1+-1i");
+    string mutiRes = complexNumberMultiply_Special(a, b);
 }
