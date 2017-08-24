@@ -34,3 +34,15 @@ int findComplement_Special(int num)
     }
     return (~num) & (~mask);
 }
+
+bool judgeSquareSum(int c)
+{
+    double b;
+    for (long a = 0; a*a <= c; a++) // 'a' must be long data type,otherwise when a*a is larger than 2147483646,it will be a dead 'for loop'.
+    {
+        b = sqrt(c - a*a);
+        if (b == (int)b)    // Judge whether 'sqrt(c - a*a)' is a real integer.
+            return true;
+    }
+    return false;
+}

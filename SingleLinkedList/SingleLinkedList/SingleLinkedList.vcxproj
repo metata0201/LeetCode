@@ -64,13 +64,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AddTwoNumbersII.cpp" />
+    <ClCompile Include="ArrayFunc.cpp" />
+    <ClCompile Include="BinaryTree.cpp" />
+    <ClCompile Include="Heap.cpp" />
+    <ClCompile Include="ListFunc.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="OtherFunc.cpp" />
     <ClCompile Include="SingleLinkedList.cpp" />
+    <ClCompile Include="StrFunc.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AddTwoNumbersII.h" />
+    <ClInclude Include="ArrayFunc.h" />
+    <ClInclude Include="BinaryTree.h" />
+    <ClInclude Include="Heap.h" />
+    <ClInclude Include="ListFunc.h" />
+    <ClInclude Include="OtherFunc.h" />
     <ClInclude Include="SingleLinkedList.h" />
+    <ClInclude Include="StrFunc.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
