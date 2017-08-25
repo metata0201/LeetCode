@@ -146,3 +146,21 @@ int distributeCandies_Special(vector<int>& candies)
     unordered_set<int> kinds(candies.begin(), candies.end()); // unordered_set range constructor
     return min(kinds.size(), candies.size() / 2);   // Distribute these candies equally
 }
+
+int countBattleships(vector<vector<char>>& board)
+{
+    int row = board.size(), col = board[0].size(), cnt = 0;
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < col; j++)
+        {
+            if (board[i][j] == 'X')
+            {
+                // Count the item whose up neighbor and left neighbor are '.' as valid battleships
+                if ((i == 0 || board[i - 1][j] == '.') && (j == 0 || board[i][j - 1] == '.'))
+                    cnt++;
+            }
+        }
+    }
+    return cnt;
+}

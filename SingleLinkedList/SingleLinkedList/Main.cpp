@@ -6,11 +6,14 @@
 #include "StrFunc.h"
 #include <iostream>
 #include <thread>
+#include <unordered_map>
 
 using namespace std;
 
 void main()
 {
-    string a("1+1i"), b("1+-1i");
-    string mutiRes = complexNumberMultiply_Special(a, b);
+    vector<vector<char>> board(2, vector<char>(2));
+    board[0] = { '.', '.' };
+    board[1] = { 'X', 'X' };
+    int cnt = countBattleships(board);
 }
