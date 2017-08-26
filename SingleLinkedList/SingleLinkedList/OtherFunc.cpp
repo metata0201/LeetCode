@@ -1,5 +1,7 @@
 #include "OtherFunc.h"
 #include <iostream>
+#include <stack>
+#include <unordered_map>
 
 using namespace std;
 
@@ -113,4 +115,57 @@ int islandPerimeter(vector<vector<int>>& grid)
     }
 
     return perimeter;
+}
+
+vector<int> nextGreaterElement(vector<int>& findNums, vector<int>& nums)
+{
+    vector<int> ret(findNums.size(), -1);
+    unordered_map<int, int> hashTable;
+    int i, index;
+
+    // Initialize the hash table
+    for (i = 0; i < nums.size(); i++)
+    {
+        hashTable[nums[i]] = i;
+    }
+
+    // Find findNums' elements in the corresponding places of nums,then scan from the place to find the fist greater number in nums
+    for (i = 0; i < findNums.size(); i++)
+    {
+        index = hashTable[findNums[i]];
+        while (index < nums.size())
+        {
+            if (nums[index] > findNums[i])
+            {
+                ret[i] = nums[index];
+                break;
+            }
+            index++;
+        }
+    }
+
+    return ret;
+}
+
+vector<int> nextGreaterElement_Special(vector<int>& findNums, vector<int>& nums)
+{
+    stack<int> s;
+    unordered_map<int, int> table;
+    // Key:element in nums, Mapped value:element's first greater number in nums
+    for (int n : nums)
+    {
+        while (s.size() && s.top() < n)
+        {
+            table[s.top()] = n;
+            s.pop();
+        }
+        s.push(n);
+    }
+
+    vector<int> ans;
+    for (int n : findNums)
+    {
+        ans.push_back(table.count(n) ? table[n] : -1);
+    }
+    return ans;
 }

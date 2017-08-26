@@ -12,8 +12,6 @@ using namespace std;
 
 void main()
 {
-    vector<vector<char>> board(2, vector<char>(2));
-    board[0] = { '.', '.' };
-    board[1] = { 'X', 'X' };
-    int cnt = countBattleships(board);
+    vector<int> nums1({ 4, 1, 2 }), nums2({ 1, 3, 4, 2 });
+    vector<int> res = nextGreaterElement_Special(nums1, nums2);
 }
