@@ -89,3 +89,28 @@ bool judgeCircle(string moves)
 
     return (x == 0 && y == 0);
 }
+
+int islandPerimeter(vector<vector<int>>& grid)
+{
+    int row = grid.size(), col = grid[0].size(), perimeter = 0;
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < col; j++)
+        {
+            // Land cell whose up,down,left,right edge connected with water cell are counted for perimeter
+            if (grid[i][j] == 1)
+            {
+                if (i == 0 || grid[i - 1][j] == 0)          // Up
+                    perimeter++;
+                if (i == row - 1 || grid[i + 1][j] == 0)    // Down
+                    perimeter++;
+                if (j == 0 || grid[i][j - 1] == 0)          // Left
+                    perimeter++;
+                if (j == col - 1 || grid[i][j + 1] == 0)    // Right
+                    perimeter++;
+            }
+        }
+    }
+
+    return perimeter;
+}
