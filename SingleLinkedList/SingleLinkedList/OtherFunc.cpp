@@ -66,3 +66,26 @@ vector<int> countBits(int num)
     }
     return ret;
 }
+
+bool judgeCircle(string moves)
+{
+    // Original position
+    int x = 0, y = 0;
+
+    // Calculate the robot's position by the move sequence
+    for (int i = 0; i < moves.size(); i++)
+    {
+        switch (moves[i])
+        {
+        case 'R': x++; break;
+        case 'L': x--; break;
+        case 'U': y++; break;
+        case 'D': y--; break;
+        default:
+            cout << "Invalid move character!" << endl;
+            break;
+        }
+    }
+
+    return (x == 0 && y == 0);
+}
