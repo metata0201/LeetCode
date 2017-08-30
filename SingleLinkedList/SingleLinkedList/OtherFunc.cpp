@@ -169,3 +169,9 @@ vector<int> nextGreaterElement_Special(vector<int>& findNums, vector<int>& nums)
     }
     return ans;
 }
+
+// Theory:https://discuss.leetcode.com/topic/26999/theorem-all-4s-shall-be-false
+bool canWinNim(int n)
+{
+    return (n % 4 != 0);
+}
