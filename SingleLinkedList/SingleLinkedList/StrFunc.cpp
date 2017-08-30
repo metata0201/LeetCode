@@ -151,3 +151,15 @@ string complexNumberMultiply_Special(string a, string b)
     streamC << ra*rb - ia*ib << "+" << ra*ib + rb*ia << "i";
     return streamC.str();
 }
+
+int findLUSlength(string a, string b)
+{
+    if (a.compare(b) != 0)
+    {
+        return max(a.length(), b.length());
+    }
+    else
+    {
+        return -1;  // string a and b are equal
+    }
+}
