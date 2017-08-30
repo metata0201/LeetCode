@@ -175,3 +175,21 @@ int singleNumber(vector<int>& nums)
     }
     return single;
 }
+
+int findMaxConsecutiveOnes(vector<int>& nums)
+{
+    int maxCount = 0, cnt = 0;
+    for (int i = 0; i < nums.size(); i++)
+    {
+        if (nums[i] == 0)
+        {
+            cnt = 0;    // cnt represent the number of consecutive 1s
+        }
+        else
+        {
+            cnt++;      // increase
+            maxCount = max(maxCount, cnt);
+        }
+    }
+    return maxCount;
+}
