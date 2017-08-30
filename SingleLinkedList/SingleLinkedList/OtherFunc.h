@@ -123,11 +123,3 @@ Both of you are very clever and have optimal strategies for the game.Write a fun
 For example, if there are 4 stones in the heap, then you will never win the game : no matter 1, 2, or 3 stones you remove, the last stone will always be removed by your friend.
 */
 bool canWinNim(int n);
-
-/*136. Single Number
-Given an array of integers, every element appears twice except for one.Find that single one.
-
-Note:
-Your algorithm should have a linear runtime complexity.Could you implement it without using extra memory ?
-*/
-int singleNumber(vector<int>& nums);
