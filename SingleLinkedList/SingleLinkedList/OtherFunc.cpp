@@ -175,3 +175,14 @@ bool canWinNim(int n)
 {
     return (n % 4 != 0);
 }
+
+// Bitwise operation
+int singleNumber(vector<int>& nums)
+{
+    int single = nums.front();
+    for (int i = 1; i < nums.size(); i++)
+    {
+        single ^= nums[i];  // XOR trick:A XOR A = 0
+    }
+    return single;
+}
