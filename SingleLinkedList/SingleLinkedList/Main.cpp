@@ -6,12 +6,16 @@
 #include "StrFunc.h"
 #include <iostream>
 #include <thread>
+#include <unordered_set>
 #include <unordered_map>
+#include <string>
+#include <locale>
 
 using namespace std;
 
+
 void main()
 {
-    vector<int> nums1({ 4, 1, 2 }), nums2({ 1, 3, 4, 2 });
-    vector<int> res = nextGreaterElement_Special(nums1, nums2);
+    vector<int> nums({ 4, 3, 2, 7, 8, 2, 3, 1 });
+    vector<int> res = findDisappearedNumbers_Special(nums);
 }

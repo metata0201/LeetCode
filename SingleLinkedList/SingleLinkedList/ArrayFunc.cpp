@@ -193,3 +193,83 @@ int findMaxConsecutiveOnes(vector<int>& nums)
     }
     return maxCount;
 }
+
+double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2)
+{
+    if (nums1.empty() && nums2.empty())
+        return 0;
+
+    vector<int> nums(nums1.size() + nums2.size(), 0);
+    int i = 0, j = 0, index = 0;
+    // Merge the two sorted array
+    while (i<nums1.size() && j<nums2.size())
+    {
+        if (nums1[i] <= nums2[j])
+        {
+            nums[index++] = nums1[i++];
+        }
+        else
+        {
+            nums[index++] = nums2[j++];
+        }
+    }
+    while (i < nums1.size())    // Copy the left elements in nums1
+    {
+        nums[index++] = nums1[i++];
+    }
+    while (j < nums2.size())    // Copy the left elements in nums2
+    {
+        nums[index++] = nums2[j++];
+    }
+
+    index = (nums.size() - 1) / 2;
+    if (nums.size() % 2 != 0)
+        return nums[index];
+    else
+        return (double)(nums[index] + nums[index + 1]) / 2;
+}
+
+vector<int> findDisappearedNumbers(vector<int>& nums)
+{
+    vector<int> res, table(nums.size(), 0);
+
+    // Mark the appeared numbers
+    for (int i = 0; i<nums.size(); i++)
+    {
+        table[nums[i] - 1]++;
+    }
+
+    // Find disappeared numbers
+    for (int i = 0; i<table.size(); i++)
+    {
+        if (table[i] == 0)
+        {
+            res.push_back(i + 1);
+        }
+    }
+
+    return res;
+}
+
+vector<int> findDisappearedNumbers_Special(vector<int>& nums)
+{
+    for (int i = 0; i < nums.size(); i++)
+    {
+        int index = abs(nums[i]) - 1;   // The appeared integer's corresponding index
+        if (nums[index] > 0)    // Using -nums[index] to mark integer(index+1) as appeared
+        {
+            nums[index] = -nums[index];
+        }
+    }
+
+    vector<int> res;
+    for (int i = 0; i < nums.size(); i++)
+    {
+        if (nums[i] > 0)        // nums[i]>0 means integer(i+1) disappeared
+        {
+            res.push_back(i + 1);
+        }
+    }
+
+    return res;
+}

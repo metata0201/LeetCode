@@ -112,3 +112,30 @@ Note:
     The length of input array is a positive integer and will not exceed 10, 000
 */
 int findMaxConsecutiveOnes(vector<int>& nums);
+
+/*4. Median of Two Sorted Arrays
+There are two sorted arrays nums1 and nums2 of size m and n respectively.
+
+Find the median of the two sorted arrays.The overall run time complexity should be O(log(m + n)).
+Example 1:
+    nums1 = [1, 3]
+    nums2 = [2],The median is 2.0
+Example 2 :
+    nums1 = [1, 2]
+    nums2 = [3, 4],The median is(2 + 3) / 2 = 2.5
+*/
+double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2);
+
+/*448. Find All Numbers Disappeared in an Array
+Given an array of integers where 1 ¡Ü a[i] ¡Ü n(n = size of array), some elements appear twice and others appear once.
+
+Find all the elements of[1, n] inclusive that do not appear in this array.
+
+Could you do it without extra space and in O(n) runtime ? You may assume the returned list does not count as extra space.
+
+Example :
+    Input :[4, 3, 2, 7, 8, 2, 3, 1]
+    Output:[5, 6]
+*/
+vector<int> findDisappearedNumbers(vector<int>& nums);
+vector<int> findDisappearedNumbers_Special(vector<int>& nums);
