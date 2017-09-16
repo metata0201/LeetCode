@@ -163,3 +163,23 @@ int findLUSlength(string a, string b)
         return -1;  // string a and b are equal
     }
 }
+
+string addBinary(string a, string b)
+{
+    string res;
+    // Add binary string from end to start
+    int carry = 0, i = a.size() - 1, j = b.size() - 1;
+    for (; i >= 0 || j >= 0; i--,j--)
+    {
+        int valA = (i >= 0) ? (a[i] - '0') : 0;
+        int valB = (j >= 0) ? (b[j] - '0') : 0;
+        res.insert(0, 1, (valA + valB + carry) % 2 + '0');
+        carry = (valA + valB + carry) / 2;
+    }
+    if (carry > 0)
+    {
+        res.insert(0, 1, '1');
+    }
+
+    return res;
+}

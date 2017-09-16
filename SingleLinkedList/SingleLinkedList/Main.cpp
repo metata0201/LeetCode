@@ -16,6 +16,6 @@ using namespace std;
 
 void main()
 {
-    vector<int> nums({ 4, 3, 2, 7, 8, 2, 3, 1 });
-    vector<int> res = findDisappearedNumbers_Special(nums);
+    string a("11"), b("1");
+    string res = addBinary(a, b);
 }
