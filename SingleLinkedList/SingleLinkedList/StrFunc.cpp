@@ -221,3 +221,22 @@ int countSegments(string s)
     }
     return segments;
 }
+
+bool detectCapitalUse(string word)
+{
+    bool firstUpper = false;    // Mark the first letter is uppercase or not
+    int nUppers = 0;            // The number of uppercase letters
+    for (int i = 0; i < word.size(); i++)
+    {
+        if (word[i]>='A' && word[i]<='Z')
+        {
+            if (i == 0)
+            {
+                firstUpper = true;
+            }
+            nUppers++;
+        }
+    }
+
+    return (nUppers == word.size()) || (nUppers == 0) || (firstUpper&&nUppers == 1);
+}
