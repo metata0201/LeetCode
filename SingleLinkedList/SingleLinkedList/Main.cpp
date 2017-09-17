@@ -16,6 +16,5 @@ using namespace std;
 
 void main()
 {
-    string a("11"), b("1");
-    string res = addBinary(a, b);
+    string out = countAndSay(5);
 }

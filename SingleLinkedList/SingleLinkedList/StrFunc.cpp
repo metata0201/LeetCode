@@ -183,3 +183,25 @@ string addBinary(string a, string b)
 
     return res;
 }
+
+string countAndSay(int n)
+{
+    string res = "1";
+    for (int i = 2; i <= n; i++)
+    {
+        string cur = "";
+        for (int j = 0; j < res.size(); j++)
+        {
+            int count = 1;
+            while (j + 1 < res.size() && res[j] == res[j + 1])
+            {
+                count++;
+                j++;
+            }
+            cur = cur + to_string(count) + res[j];
+        }
+        res = cur;
+    }
+
+    return res;
+}
