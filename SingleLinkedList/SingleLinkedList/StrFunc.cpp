@@ -240,3 +240,43 @@ bool detectCapitalUse(string word)
 
     return (nUppers == word.size()) || (nUppers == 0) || (firstUpper&&nUppers == 1);
 }
+
+bool checkRecord(string s)
+{
+    int countA = 0, maxL = 0, countL = 0;
+    for (int i = 0; i < s.size(); i++)
+    {
+        if (s[i] == 'A')
+        {
+            countA++;
+        }
+
+        if (s[i] == 'L')
+        {
+            countL++;
+            if (maxL < countL)
+            {
+                maxL = countL;
+            }
+        }
+        else
+        {
+            countL = 0;
+        }
+    }
+
+    return (countA <= 1) && (maxL <= 2);
+}
+
+bool checkRecord_Special(string s)
+{
+    int a = 0, l = 0;
+    for (int i = 0; i<s.size(); i++)
+    {
+        if (s[i] == 'A') a++;
+        if (s[i] == 'L') l++;
+        else l = 0;
+        if (a >= 2 || l>2) return false;
+    }
+    return true;
+}

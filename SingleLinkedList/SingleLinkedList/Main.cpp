@@ -16,5 +16,6 @@ using namespace std;
 
 void main()
 {
-    string out = countAndSay(5);
+    string s = "LALLLPL";
+    bool out = checkRecord_Special(s);
 }
